@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="theme-color" content="#faf8f2" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <title>Oleg's Fossil Collection</title>
+    <meta name="description" content="Oleg's Fossil Collection: Interactive paleontological field guide and global fossil origin map explorer." />
+    <meta property="og:title" content="Oleg's Fossil Collection" />
+    <meta property="og:description" content="Oleg's Fossil Collection: Interactive paleontological field guide and global fossil origin map explorer." />
+    <link rel="icon" type="image/svg+xml" href="/dino.svg?v=4" />
+    <link rel="apple-touch-icon" href="/dino.svg?v=4" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'park-water': '#4ea6a9',
+              'park-water-light': '#66bfc1',
+              'park-water-dark': '#3a878a',
+              'park-water-bg': '#54b0b2',
+              'park-land': '#b5d774',
+              'park-land-dark': '#97be56',
+              'park-land-light': '#c8e48b',
+              'park-sand': '#f6f3e5',
+              'park-tree': '#1e3a3a',
+              'park-trunk': '#735238',
+              'park-card': '#fbfaf8',
+              'park-card-muted': '#f3f1ea',
+              'park-card-border': '#e2ded5',
+              'park-ink': '#1a2e2b',
+              'park-ink-muted': '#526e68',
+              'park-ink-light': '#849e98',
+              'park-border-green': '#6ba34b',
+              'park-accent-yellow': '#f5a623',
+              'park-accent-orange': '#e67e22',
+              'park-accent-coral': '#f43f5e',
+              'park-accent-blue': '#1a73e8',
+              'park-accent-green': '#10b981',
+              'park-bus': '#e74c3c',
+            },
+            fontFamily: {
+              hand: ['"Plus Jakarta Sans"', '"Inter"', 'sans-serif'],
+              rounded: ['"Inter"', 'sans-serif'],
+              sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+              mono: ['"Roboto Mono"', 'monospace'],
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="https://esm.sh/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+      body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        height: 100dvh;
+        width: 100%;
+        overflow: hidden;
+        font-family: 'Nunito', 'M PLUS Rounded 1c', sans-serif;
+        -webkit-tap-highlight-color: transparent;
+        overscroll-behavior: none;
+      }
+      /* Leaflet Anti-Seam & High-Resolution Tile Fixes */
+      .leaflet-container {
+        background: #99b6c1 !important;
+        font-family: inherit;
+        outline: none;
+      }
+      .leaflet-tile {
+        /* Eliminates subpixel seam lines, jagged rasterization, and fractional gap artifacts */
+        outline: 1px solid transparent;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: high-quality;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        transform: translateZ(0);
+      }
+      .leaflet-tile-container {
+        pointer-events: none;
+      }
+      .leaflet-fade-anim .leaflet-tile {
+        will-change: opacity, transform;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "d3": "https://esm.sh/d3@7.9.0",
+    "topojson-client": "https://esm.sh/topojson-client@3.1.0",
+    "leaflet": "https://esm.sh/leaflet@1.9.4"
+  }
+}
+</script>
+</head>
+  <body class="bg-park-card text-park-ink selection:bg-park-accent-yellow/30 selection:text-park-ink">
+    <div id="root" class="h-full w-full"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
